@@ -1,7 +1,10 @@
 import { useState } from "react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Notes from "./components/Notes";
+import Error from "./pages/Error";
+import Notes from "./pages/Notes";
+import { Routes, Route } from "react-router-dom";
+import Details from "./pages/Details";
 
 function App() {
   const [notes, setNotes] = useState([
@@ -14,7 +17,7 @@ function App() {
       id: 2,
       title: "Project MAANG",
       details:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti eveniet sapiente quasi eos facere impedit libero iure accusamus, quis dolor ratione aspernatur blanditiis eius vero repellat vitae? Expedita, nostrum ad?",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti eveniet sapiente quasi eos facere impedit libero iure accusamus, quis dolor ratione aspernatur blanditiis eius vero repellat vitae? Expedita, nostrum ad?Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti eveniet sapiente quasi eos facere impedit libero iure accusamus, quis dolor ratione aspernatur blanditiis eius vero repellat vitae? Expedita, nostrum ad?Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti eveniet sapiente quasi eos facere impedit libero iure accusamus, quis dolor ratione aspernatur blanditiis eius vero repellat vitae? Expedita, nostrum ad?Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti eveniet sapiente quasi eos facere impedit libero iure accusamus, quis dolor ratione aspernatur blanditiis eius vero repellat vitae? Expedita, nostrum ad?Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti eveniet sapiente quasi eos facere impedit libero iure accusamus, quis dolor ratione aspernatur blanditiis eius vero repellat vitae? Expedita, nostrum ad?Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti eveniet sapiente quasi eos facere impedit libero iure accusamus, quis dolor ratione aspernatur blanditiis eius vero repellat vitae? Expedita, nostrum ad?",
     },
     {
       id: 3,
@@ -45,7 +48,16 @@ function App() {
   return (
     <div className="App scrollbar-hide">
       <Header />
-      <Notes notes={notes} setNotes={setNotes} />
+      <Routes>
+        <Route
+          index
+          path="/"
+          element={<Notes notes={notes} setNotes={setNotes} />}
+        />
+        <Route path="/details/:id" element={<Details notes={notes} />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
+
       <Footer length={notes.length} />
     </div>
   );

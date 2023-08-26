@@ -6,9 +6,12 @@ const Notes = ({ notes, setNotes }) => {
   return (
     <main className="mt-[10vh] p-2 bg-sand h-[80vh] overflow-y-scroll scrollbar-hide">
       {notes.map((note) => (
-        <Link to={"/details/" + note.id}>
-          <SubNotes key={note.id} note={note} />
-        </Link>
+          <SubNotes
+            key={note.id}
+            notes={notes}
+            note={note}
+            setNotes={setNotes}
+          />
       ))}
     </main>
   );

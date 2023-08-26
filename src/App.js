@@ -5,6 +5,7 @@ import Error from "./pages/Error";
 import Notes from "./pages/Notes";
 import { Routes, Route } from "react-router-dom";
 import Details from "./pages/Details";
+import Add from "./pages/Add";
 
 function App() {
   const [notes, setNotes] = useState([
@@ -55,6 +56,10 @@ function App() {
           element={<Notes notes={notes} setNotes={setNotes} />}
         />
         <Route path="/details/:id" element={<Details notes={notes} />} />
+        <Route
+          path="/add"
+          element={<Add setNotes={setNotes} notes={notes} />}
+        />
         <Route path="*" element={<Error />} />
       </Routes>
 

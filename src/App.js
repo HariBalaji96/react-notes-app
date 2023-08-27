@@ -46,14 +46,26 @@ function App() {
       details: "Data structure & Algorithm",
     },
   ]);
+  const [search, setSearch] = useState("");
   return (
     <div className="App scrollbar-hide">
-      <Header />
+      <Header search={search} setSearch={setSearch} />
       <Routes>
         <Route
           index
           path="/"
-          element={<Notes notes={notes} setNotes={setNotes} />}
+          element={
+            <Notes
+              notes={
+                search
+                  ? notes.filter((note) =>
+                      note.title.toLowerCase().includes(search.toLowerCase())
+                    )
+                  : notes
+              }
+              setNotes={setNotes}
+            />
+          }
         />
         <Route path="/details/:id" element={<Details notes={notes} />} />
         <Route

@@ -31,6 +31,7 @@ const Add = ({ setNotes, notes }) => {
           type="text"
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Title"
+          required
           className="w-[90%] outline-none border-grayish text-bluish border-2 p-5 my-5 rounded-full text-2xl font-semibold"
         />
         <textarea
@@ -38,6 +39,7 @@ const Add = ({ setNotes, notes }) => {
           rows="10"
           onChange={(e) => setDetails(e.target.value)}
           placeholder="Note"
+          required
           className="w-[90%] p-2 outline-none resize-none text-bluish  border-grayish border-2  my-5 rounded-md  font-semibold "
         ></textarea>
         <button
